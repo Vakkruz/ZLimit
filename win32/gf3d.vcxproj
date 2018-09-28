@@ -41,7 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\ZLimit\include;C:\VulkanSDK\1.1.82.1\Include;C:\ZLimit\libs\include\SDL_ttf;C:\ZLimit\libs\include\SDL_mixer;C:\ZLimit\libs\include\SDL_image;C:\ZLimit\libs\include\SDL;$(IncludePath)</IncludePath>
+    <IncludePath>C:\ZLimit\libs\include\glm;C:\ZLimit\include;C:\VulkanSDK\1.1.82.1\Include;C:\ZLimit\libs\include\SDL_ttf;C:\ZLimit\libs\include\SDL_mixer;C:\ZLimit\libs\include\SDL_image;C:\ZLimit\libs\include\SDL;$(IncludePath)</IncludePath>
     <LibraryPath>C:\VulkanSDK\1.1.82.1\Lib32;C:\ZLimit\libs;$(LibraryPath)</LibraryPath>
     <OutDir>..</OutDir>
   </PropertyGroup>
