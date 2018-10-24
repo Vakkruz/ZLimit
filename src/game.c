@@ -33,21 +33,24 @@ int main(int argc,char *argv[])
     // main game loop
     slog("gf3d main loop begin");
     model = gf3d_model_load("agumon");
-    model2 = gf3d_model_load("cube");
+    model2 = gf3d_model_load("EGX");
+	//gf3d_vgraphics_rotate_camera_X(0);
+
     while(!done)
     {
         SDL_PumpEvents();   // update SDL's internal event structures
         keys = SDL_GetKeyboardState(NULL); // get the keyboard state for this frame
         //update game things here
         
-        gf3d_vgraphics_rotate_camera(0.001);
+		//gf3d_vgraphics_rotate_camera_Z(0.001);
+		gf3d_vgraphics_rotate_camera_X(0.001);
         
         // configure render command for graphics command pool
         // for each mesh, get a command and configure it from the pool
         bufferFrame = gf3d_vgraphics_render_begin();
         commandBuffer = gf3d_command_rendering_begin(bufferFrame);
 
-            gf3d_model_draw(model,bufferFrame,commandBuffer);
+            //gf3d_model_draw(model,bufferFrame,commandBuffer);
             gf3d_model_draw(model2,bufferFrame,commandBuffer);
             
         gf3d_command_rendering_end(commandBuffer);

@@ -708,7 +708,7 @@ void gf3d_vgraphics_update_uniform_buffer(uint32_t currentImage)
     vkUnmapMemory(gf3d_vgraphics.device, gf3d_vgraphics.uniformBuffersMemory[currentImage]);
 }
 
-void gf3d_vgraphics_rotate_camera(float degrees)
+void gf3d_vgraphics_rotate_camera_Z(float degrees)
 {
     gf3d_matrix_rotate(
         gf3d_vgraphics.ubo.model,
@@ -717,6 +717,28 @@ void gf3d_vgraphics_rotate_camera(float degrees)
         vector3d(0,0,1));
 
 }
+
+void gf3d_vgraphics_rotate_camera_Y(float degrees)
+{
+	gf3d_matrix_rotate(
+		gf3d_vgraphics.ubo.model,
+		gf3d_vgraphics.ubo.model,
+		degrees,
+		vector3d(0, 1, 0));
+
+}
+
+void gf3d_vgraphics_rotate_camera_X(float degrees)
+{
+	gf3d_matrix_rotate(
+		gf3d_vgraphics.ubo.model,
+		gf3d_vgraphics.ubo.model,
+		degrees,
+		vector3d(1, 0, 0));
+
+}
+
+
 
 Pipeline *gf3d_vgraphics_get_graphics_pipeline()
 {
