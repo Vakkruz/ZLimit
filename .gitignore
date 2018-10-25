@@ -42,6 +42,10 @@
 *.idb
 *.pdb
 
+# Visual Studio stuff
+*.tlog
+*.sdf
+
 # Kernel Module Compile Results
 *.mod*
 *.cmd
@@ -53,3 +57,5 @@ dkms.conf
 makefile.dep
 gf3d
 *.log
+*.tlog
+*.sdf

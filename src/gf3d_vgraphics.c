@@ -246,6 +246,8 @@ void gf3d_vgraphics_setup(
 
 	enableValidation = false;
     
+	enableValidation = false;
+
     if (enableValidation)
     {
         gf3d_vgraphics.enableValidationLayers = true;
@@ -530,6 +532,7 @@ Bool gf3d_vgraphics_device_validate(VkPhysicalDevice device)
 	return (deviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU || deviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU) && (deviceFeatures.geometryShader);
 }
 
+/*
 VkPhysicalDevice gf3d_vgraphics_select_device()
 {
     int i;
@@ -543,6 +546,26 @@ VkPhysicalDevice gf3d_vgraphics_select_device()
     }
 
     return chosen;
+}
+*/
+
+VkPhysicalDevice gf3d_vgraphics_select_device()
+{
+	int i;
+	VkPhysicalDeviceProperties deviceProperties;
+	VkPhysicalDevice chosen = VK_NULL_HANDLE;
+	for (i = 0; i < gf3d_vgraphics.device_count; i++)
+	{
+		if (gf3d_vgraphics_device_validate(gf3d_vgraphics.devices[i]))
+		{
+			chosen = gf3d_vgraphics.devices[i];
+			vkGetPhysicalDeviceFeatures(chosen, &deviceProperties);
+			if (deviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU){
+				return chosen;
+			}
+		}
+	}
+	return chosen;
 }
 
 
