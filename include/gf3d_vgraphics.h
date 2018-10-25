@@ -48,6 +48,9 @@ void gf3d_vgraphics_rotate_camera_Y(float degrees);
 
 void gf3d_vgraphics_rotate_camera_X(float degrees);
 
+void gf3d_vgraphics_zoom(float increment);
+
+
 
 VkBuffer gf3d_vgraphics_get_uniform_buffer_by_index(Uint32 index);
 

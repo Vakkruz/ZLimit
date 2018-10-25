@@ -526,7 +526,8 @@ Bool gf3d_vgraphics_device_validate(VkPhysicalDevice device)
     slog("apiVersion: %i",deviceProperties.apiVersion);
     slog("driverVersion: %i",deviceProperties.driverVersion);
     slog("supports Geometry Shader: %i",deviceFeatures.geometryShader);
-    return (deviceProperties.deviceType == GF3D_VGRAPHICS_DISCRETE)&&(deviceFeatures.geometryShader);
+    //return (deviceProperties.deviceType == GF3D_VGRAPHICS_DISCRETE)&&(deviceFeatures.geometryShader);
+	return (deviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU || deviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU) && (deviceFeatures.geometryShader);
 }
 
 VkPhysicalDevice gf3d_vgraphics_select_device()
@@ -736,6 +737,16 @@ void gf3d_vgraphics_rotate_camera_X(float degrees)
 		degrees,
 		vector3d(1, 0, 0));
 
+}
+
+void gf3d_vgraphics_zoom(float increment)
+{
+	gf3d_matrix_view(
+		gf3d_vgraphics.ubo.view,
+		vector3d(increment + 2, 20, 2),	// X Axis
+		vector3d(0, 0, 0), // Y Axis
+		vector3d(0, 0, 1) //Z Axis
+	);
 }
 
 

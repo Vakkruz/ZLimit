@@ -14,6 +14,7 @@ int main(int argc,char *argv[])
 {
     int done = 0;
     const Uint8 * keys;
+	const Uint8 * mouse;
     Uint32 bufferFrame = 0;
     VkCommandBuffer commandBuffer;
     Model *model;
@@ -40,10 +41,12 @@ int main(int argc,char *argv[])
     {
         SDL_PumpEvents();   // update SDL's internal event structures
         keys = SDL_GetKeyboardState(NULL); // get the keyboard state for this frame
+		mouse = SDL_GetMouseState(NULL, NULL);
+
         //update game things here
         
 		//gf3d_vgraphics_rotate_camera_Z(0.001);
-		gf3d_vgraphics_rotate_camera_X(0.001);
+		//gf3d_vgraphics_rotate_camera_Z(0.001);
         
         // configure render command for graphics command pool
         // for each mesh, get a command and configure it from the pool
@@ -55,6 +58,18 @@ int main(int argc,char *argv[])
             
         gf3d_command_rendering_end(commandBuffer);
         gf3d_vgraphics_render_end(bufferFrame);
+
+		if(keys[SDL_SCANCODE_Q])gf3d_vgraphics_rotate_camera_Z(0.006);
+		if (keys[SDL_SCANCODE_E])gf3d_vgraphics_rotate_camera_Z(-1 * 0.006);
+
+		if (keys[SDL_SCANCODE_W])gf3d_vgraphics_rotate_camera_X(0.006);
+		if (keys[SDL_SCANCODE_S])gf3d_vgraphics_rotate_camera_X(-1 * 0.006);
+
+		if (keys[SDL_SCANCODE_A])gf3d_vgraphics_rotate_camera_Y(0.006);
+		if (keys[SDL_SCANCODE_D])gf3d_vgraphics_rotate_camera_Y(-1 * 0.006);
+
+		//if (keys[SDL_SCANCODE_LCTRL] && mouse != NULL)gf3d_vgraphics_zoom(5);
+
 
         if (keys[SDL_SCANCODE_ESCAPE])done = 1; // exit condition
     }    
