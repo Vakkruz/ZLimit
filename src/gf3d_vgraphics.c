@@ -759,6 +759,7 @@ void gf3d_vgraphics_rotate_camera_X(float degrees)
 		gf3d_vgraphics.ubo.model,
 		degrees,
 		vector3d(1, 0, 0));
+	slog("%f",degrees);
 
 }
 
@@ -766,7 +767,7 @@ void gf3d_vgraphics_zoom(float increment)
 {
 	gf3d_matrix_view(
 		gf3d_vgraphics.ubo.view,
-		vector3d(increment + 2, 20, 2),	// X Axis
+		vector3d(2, increment, 2),	// X Axis
 		vector3d(0, 0, 0), // Y Axis
 		vector3d(0, 0, 1) //Z Axis
 	);

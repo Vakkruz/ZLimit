@@ -15,6 +15,8 @@ int main(int argc,char *argv[])
     int done = 0;
     const Uint8 * keys;
 	const Uint8 * mouse;
+	const Uint8 * barrierI;
+	const Uint8 * barrierO;
     Uint32 bufferFrame = 0;
     VkCommandBuffer commandBuffer;
     Model *model;
@@ -59,16 +61,24 @@ int main(int argc,char *argv[])
         gf3d_command_rendering_end(commandBuffer);
         gf3d_vgraphics_render_end(bufferFrame);
 
-		if(keys[SDL_SCANCODE_Q])gf3d_vgraphics_rotate_camera_Z(0.006);
-		if (keys[SDL_SCANCODE_E])gf3d_vgraphics_rotate_camera_Z(-1 * 0.006);
+		if(keys[SDL_SCANCODE_Q])gf3d_vgraphics_rotate_camera_Z(0.02);
+		if (keys[SDL_SCANCODE_E])gf3d_vgraphics_rotate_camera_Z(-1 * 0.02);
 
-		if (keys[SDL_SCANCODE_W])gf3d_vgraphics_rotate_camera_X(0.006);
-		if (keys[SDL_SCANCODE_S])gf3d_vgraphics_rotate_camera_X(-1 * 0.006);
+		if (keys[SDL_SCANCODE_W])gf3d_vgraphics_rotate_camera_X(0.02);
+		if (keys[SDL_SCANCODE_S])gf3d_vgraphics_rotate_camera_X(-1 * 0.02);
 
-		if (keys[SDL_SCANCODE_A])gf3d_vgraphics_rotate_camera_Y(0.006);
-		if (keys[SDL_SCANCODE_D])gf3d_vgraphics_rotate_camera_Y(-1 * 0.006);
+		if (keys[SDL_SCANCODE_A])gf3d_vgraphics_rotate_camera_Y(0.02);
+		if (keys[SDL_SCANCODE_D])gf3d_vgraphics_rotate_camera_Y(-1 * 0.02);
 
-		//if (keys[SDL_SCANCODE_LCTRL] && mouse != NULL)gf3d_vgraphics_zoom(5);
+		if (keys[SDL_SCANCODE_LCTRL]) {
+			for (float i = 0; i < 1060; i++) {
+				gf3d_vgraphics_zoom(i * 0.2);
+			}
+		}
+
+		//if (SDL_BUTTON(SDL_BUTTON_RIGHT) && mouse)slog("Mouse 2 pressed");
+		
+		//gf3d_vgraphics_zoom(0.2);
 
 
         if (keys[SDL_SCANCODE_ESCAPE])done = 1; // exit condition
