@@ -125,7 +125,7 @@
     <ClInclude Include="..\include\gf3d_texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\gf3d_entity_player.h">
+    <ClInclude Include="..\include\gf3d_entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
