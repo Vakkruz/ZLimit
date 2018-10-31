@@ -13,6 +13,7 @@
 int main(int argc,char *argv[])
 {
     int done = 0;
+	double camera_bound = 0;
     const Uint8 * keys;
 	const Uint8 * mouse;
 	const Uint8 * barrierI;
@@ -49,39 +50,42 @@ int main(int argc,char *argv[])
 
         //update game things here
         
-		gf3d_vgraphics_rotate_camera_Z(0.001);
-		gf3d_vgraphics_rotate_camera_Z(0.001);
+		//gf3d_vgraphics_rotate_camera_Z(0.001);
+		//gf3d_vgraphics_rotate_camera_Z(0.001);
         
         // configure render command for graphics command pool
         // for each mesh, get a command and configure it from the pool
         bufferFrame = gf3d_vgraphics_render_begin();
         commandBuffer = gf3d_command_rendering_begin(bufferFrame);
 
-			gf3d_model_draw(model,bufferFrame,commandBuffer);
+			//gf3d_model_draw(model,bufferFrame,commandBuffer);
             gf3d_model_draw(model2,bufferFrame,commandBuffer);
             
         gf3d_command_rendering_end(commandBuffer);
         gf3d_vgraphics_render_end(bufferFrame);
 
 		
-		//if(keys[SDL_SCANCODE_Q])gf3d_vgraphics_rotate_camera_Z(0.02);
-		//if (keys[SDL_SCANCODE_E])gf3d_vgraphics_rotate_camera_Z(-1 * 0.02);
+		if (keys[SDL_SCANCODE_Q])gf3d_vgraphics_rotate_camera_X(0.02);
+		if (keys[SDL_SCANCODE_E])gf3d_vgraphics_rotate_camera_X(-1 * 0.02);
 
-		if (keys[SDL_SCANCODE_W])gf3d_vgraphics_rotate_camera_X(0.02);
-		if (keys[SDL_SCANCODE_S])gf3d_vgraphics_rotate_camera_X(-1 * 0.02);
+		if (keys[SDL_SCANCODE_S])gf3d_vgraphics_rotate_camera_Y(0.02);
+		if (keys[SDL_SCANCODE_W])gf3d_vgraphics_rotate_camera_Y(-1 * 0.02);
 
-		if (keys[SDL_SCANCODE_A])gf3d_vgraphics_rotate_camera_Y(0.02);
-		if (keys[SDL_SCANCODE_D])gf3d_vgraphics_rotate_camera_Y(-1 * 0.02);
+		if (keys[SDL_SCANCODE_D])gf3d_vgraphics_rotate_camera_Z(0.02);
+		if (keys[SDL_SCANCODE_A])gf3d_vgraphics_rotate_camera_Z(-1 * 0.02);
 		
-		/*
-		if (keys[SDL_SCANCODE_Z]) {
-				gf3d_vgraphics_zoom(0.2);
+
+		if (keys[SDL_SCANCODE_LCTRL] && (camera_bound > -15.0)) {
+			camera_bound -= 0.1;
+			slog("%lf", camera_bound);
+			gf3d_vgraphics_zoom(camera_bound);
 		}
-		*/
-		//if (SDL_BUTTON(SDL_BUTTON_RIGHT) && mouse)slog("Mouse 2 pressed");
-		
-		//gf3d_vgraphics_zoom(0.2);
 
+		if(keys[SDL_SCANCODE_LALT] && (camera_bound < 15.0)) {
+			camera_bound += 0.1;
+			slog("%lf", camera_bound);
+			gf3d_vgraphics_zoom(camera_bound);
+		}
 
         if (keys[SDL_SCANCODE_ESCAPE])done = 1; // exit condition
     }    

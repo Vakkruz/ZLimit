@@ -107,7 +107,6 @@
   <ItemGroup>
     <ClInclude Include="..\include\gf3d_camera.h" />
     <ClInclude Include="..\include\gf3d_commands.h" />
-    <ClInclude Include="..\include\gf3d_entity_player.h" />
     <ClInclude Include="..\include\gf3d_extensions.h" />
     <ClInclude Include="..\include\gf3d_matrix.h" />
     <ClInclude Include="..\include\gf3d_mesh.h" />

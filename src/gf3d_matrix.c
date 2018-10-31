@@ -138,7 +138,7 @@ void gf3d_matrix_rotate(
     Result[3][2] = m[3][2];
     Result[3][3] = m[3][3];
     gf3d_matrix_copy(out,Result);
-	slog("%f", Result);
+	//slog("%f", Result);
 }
 
 void gf3d_matrix_perspective(

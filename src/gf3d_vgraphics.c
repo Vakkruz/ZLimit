@@ -111,17 +111,11 @@ void gf3d_vgraphics_init(
     gf3d_matrix_identity(gf3d_vgraphics.ubo.proj);
 	gf3d_matrix_view(
 		gf3d_vgraphics.ubo.view,
-		vector3d(20, 40, 2),	//middle option seems to control zoom? need to look into further?
+		vector3d(20, 40, 2),	//controls positioning of camera on different axies; VERY IMPORTANT
 		vector3d(0, 1, 0),
-		vector3d(0, 0, 1)
+		vector3d(0, 1, 0)	//controls 
     );
 
-
-	/*
-	vector3d(2, 20, 2),
-	vector3d(0,0,0),
-	vector3d(0,0,1)
-	*/
     gf3d_matrix_perspective(
         gf3d_vgraphics.ubo.proj,
         45 * GF3D_DEGTORAD,
@@ -768,17 +762,17 @@ void gf3d_vgraphics_rotate_camera_X(float degrees)
 		vector3d(1, 0, 0));
 }
 
-/*
+
 void gf3d_vgraphics_zoom(float increment)
 {
 	gf3d_matrix_view(
 		gf3d_vgraphics.ubo.view,
-		vector3d(2, increment, 2),	// X Axis
-		vector3d(0, 0, 0), // Y Axis
-		vector3d(0, 0, 1) //Z Axis
+		vector3d(20+increment, 40+increment, 2+increment),
+		vector3d(0, 0, 0), 
+		vector3d(0, 1, 0)
 	);
 }
-*/
+
 
 
 Pipeline *gf3d_vgraphics_get_graphics_pipeline()
