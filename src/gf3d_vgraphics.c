@@ -767,7 +767,7 @@ void gf3d_vgraphics_zoom(float increment)
 {
 	gf3d_matrix_view(
 		gf3d_vgraphics.ubo.view,
-		vector3d(20+increment, 40+increment, 2+increment),
+		vector3d(20, 40+increment, 2),//+increment),
 		vector3d(0, 0, 0), 
 		vector3d(0, 1, 0)
 	);

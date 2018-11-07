@@ -16,8 +16,6 @@ int main(int argc,char *argv[])
 	double camera_bound = 0;
     const Uint8 * keys;
 	const Uint8 * mouse;
-	const Uint8 * barrierI;
-	const Uint8 * barrierO;
     Uint32 bufferFrame = 0;
     VkCommandBuffer commandBuffer;
     Model *model;
