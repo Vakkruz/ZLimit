@@ -30,9 +30,10 @@ typedef enum {
 typedef struct Entity_S {
 	
 	/*entity info*/
-	Uint64 id;
-	EntityState state;
-	EntityType	type;
+	Uint8 used;				//Is it being used?
+	Uint64 id;				//Who is it?
+	EntityState state;		//What's it doing now?
+	EntityType	type;		//What is it?
 
 	/*position and physix*/
 	Vector3D point;			//position of entity
@@ -72,6 +73,12 @@ typedef struct Entity_S {
 	maxEntities limits amount of active entities
 */
 void entity_sys_start(Uint32 maxEntities);
+
+/*
+	Shutdown entity system
+*/
+
+void entity_sys_end();
 
 /*
 	adds new entity to the system
