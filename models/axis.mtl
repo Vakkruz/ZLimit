@@ -1,0 +1,90 @@
+newmtl ID293SG
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl ID313SG
+illum 4
+Kd 0.00 0.80 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl ID325SG
+illum 4
+Kd 1.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl ID337SG
+illum 4
+Kd 0.00 0.00 1.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl SketchUpSG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.20 0.20 0.20
+Tf 0.15 0.15 0.15
+Ni 1.00
+newmtl SphereSG
+illum 4
+Kd 0.60 1.00 0.20
+Ka 0.20 0.20 0.20
+Tf 0.30 0.30 0.30
+Ni 1.00
+newmtl SphereSG1
+illum 4
+Kd 0.20 0.20 1.00
+Ka 0.20 0.20 0.20
+Tf 0.30 0.30 0.30
+Ni 1.00
+newmtl SphereSG2
+illum 4
+Kd 1.00 0.40 0.40
+Ka 0.20 0.20 0.20
+Tf 0.30 0.30 0.30
+Ni 1.00
+newmtl XSG
+illum 4
+Kd 1.00 0.25 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl YSG
+illum 4
+Kd 0.50 1.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl _FBXASC045SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl __SG
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl group_0SG
+illum 4
+Kd 1.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl group_2SG
+illum 4
+Kd 0.00 1.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl initialShadingGroup
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
