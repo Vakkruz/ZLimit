@@ -113,7 +113,7 @@ void gf3d_vgraphics_init(
 		gf3d_vgraphics.ubo.view,
 		vector3d(20, 40, 2),	//controls positioning of camera on different axies; VERY IMPORTANT
 		vector3d(0, 1, 0),
-		vector3d(0, 1, 0)	//controls 
+		vector3d(0, 1, 0)	//controls orientation of camera, relative to what direction "up" is. in this case, "up" is on the Y axis
     );
 
     gf3d_matrix_perspective(

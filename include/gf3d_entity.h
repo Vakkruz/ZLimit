@@ -1,7 +1,16 @@
 #pragma once
 #include <SDL.h>
 
+#include "simple_logger.h"
+#include "gf3d_vgraphics.h"
+#include "gf3d_pipeline.h"
+#include "gf3d_swapchain.h"
+#include "gf3d_model.h"
+#include "gf3d_matrix.h"
+#include "gf3d_camera.h"
 #include "gf3d_vector.h"
+#include "gf3d_texture.h"
+#include "gf3d_entity.h"
 
 /*
 	File defining concept Entity system. 
@@ -30,18 +39,20 @@ typedef enum {
 typedef struct Entity_S {
 	
 	/*entity info*/
-	Uint8 used;				//Is it being used?
-	Uint64 id;				//Who is it?
+	Uint8		used;				//Is it being used?
+	Uint64		id;				//Who is it?
 	EntityState state;		//What's it doing now?
 	EntityType	type;		//What is it?
 
 	/*position and physix*/
-	Vector3D point;			//position of entity
-	Vector3D velocity;		//movement direction
-	Vector3D acceleration; 
+	Vector3D	point;			//position of entity
+	Vector3D	velocity;		//movement direction
+	Vector3D	acceleration; 
 
 	/*grafix*/
-	//Not implemented yet
+	Vector3D	scale;
+	Vector3D	scalecenter;
+	char		modelname;		//model to be attached to entity
 
 	/*sound*/
 	//Not implemented yet
@@ -59,11 +70,11 @@ typedef struct Entity_S {
 
 	/*specific parameters*/
 
-	float	maxSpeed;
-	float	speed;
-	int		powerAbil;			//Tracks the amount of "power chunks" the entity has (applicable only for players and bots)
-	int		health;
-	int		maxHealth;
+	float		maxSpeed;
+	float		speed;
+	int			powerAbil;			//Tracks the amount of "power chunks" the entity has (applicable only for players and bots)
+	int			health;
+	int			maxHealth;
 
 }Entity;
 
@@ -94,7 +105,7 @@ void free_entity(Entity *self);
 /*
 	draw a single entity
 */
-void draw_entity(Entity *self);
+void draw_entity(Entity *self, VkCommandBuffer combuff, Uint32 bufframe);
 
 /*
 	update all active entities
@@ -104,7 +115,7 @@ void update_all_ent();
 /*
 	draws all active entities
 */
-void draw_all_ent();
+void draw_all_ents();
 
 /*
 	calls think fucntion for all active entities

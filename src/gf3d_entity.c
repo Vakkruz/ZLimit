@@ -1,4 +1,5 @@
 #include "gf3d_entity.h"
+
 #include "simple_logger.h"
 
 
@@ -39,6 +40,7 @@ void entity_sys_end() {
 		for (i = 0; i < entity_manager.maxEntities; i++)
 		{
 			free_entity(&entity_manager.entityList[i]);
+			//slog("Freed entity #%i", i);
 		}
 		free(entity_manager.entityList);
 	}
@@ -47,20 +49,30 @@ void entity_sys_end() {
 
 }
 
-Entity *new_entity()
+Entity *new_entity(char name)
 {
 	int i;
 	for (i = 0; i < entity_manager.maxEntities; i++)
 	{
 		if (entity_manager.entityList[i].used == 0)
 		{
-
 			memset(&entity_manager.entityList[i], 0, sizeof(Entity));
 			entity_manager.entityList[i].id = entity_manager.autoincrement++;
 			entity_manager.entityList[i].used = 1;
 			
-
+			vector2d_set(entity_manager.entityList[i].scale, 1, 1);
+			if (name == "bot") {
+				entity_manager.entityList[i].type = BOT;
+				entity_manager.entityList[i].modelname = "cube";
+			}
+			if (name == "player") {
+				entity_manager.entityList[i].type = PLAYER;
+				entity_manager.entityList[i].modelname = "hedron";
+			}
+			
+			//slog("Entity created: Number #%i", i);
 			return &entity_manager.entityList[i];
+			
 		}
 	}
 	return NULL;
@@ -69,12 +81,23 @@ Entity *new_entity()
 
 void free_entity(Entity *self)
 {
+	Model model;
 	int i;
 	if (!self)return;
+
 	if (self->free)self->free(self);
 	memset(self, 0, sizeof(Entity));
 }
 
-void draw_entity(Entity *self) {
+void draw_entity(Entity *self, VkCommandBuffer combuff, Uint32 bufframe) {
 
+	gf3d_model_draw(gf3d_model_load(self->modelname),bufframe,combuff);
+
+}
+
+void draw_all_ents(VkCommandBuffer combuff, Uint32 bufframe) {
+	int i;
+	for (i = 0; i < entity_manager.maxEntities; i++) {
+		gf3d_model_draw(gf3d_model_load(&entity_manager.entityList[i].modelname), bufframe, combuff);
+	}
 }
