@@ -105,7 +105,7 @@ void free_entity(Entity *self);
 /*
 	draw a single entity
 */
-void draw_entity(Entity *self, VkCommandBuffer combuff, Uint32 bufframe);
+void draw_entity(Entity *self, Uint32 bufframe, VkCommandBuffer combuff);
 
 /*
 	update all active entities
@@ -115,7 +115,7 @@ void update_all_ent();
 /*
 	draws all active entities
 */
-void draw_all_ents();
+void draw_all_ents(Uint32 bufframe, VkCommandBuffer combuff);
 
 /*
 	calls think fucntion for all active entities

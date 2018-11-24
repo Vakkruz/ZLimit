@@ -67,7 +67,7 @@ Entity *new_entity(char name)
 			}
 			if (name == "player") {
 				entity_manager.entityList[i].type = PLAYER;
-				entity_manager.entityList[i].modelname = "hedron";
+				entity_manager.entityList[i].modelname = "EGX";
 			}
 			
 			//slog("Entity created: Number #%i", i);
@@ -89,15 +89,15 @@ void free_entity(Entity *self)
 	memset(self, 0, sizeof(Entity));
 }
 
-void draw_entity(Entity *self, VkCommandBuffer combuff, Uint32 bufframe) {
+void draw_entity(Entity *self, Uint32 bufframe, VkCommandBuffer combuff) {
 
 	gf3d_model_draw(gf3d_model_load(self->modelname),bufframe,combuff);
 
 }
 
-void draw_all_ents(VkCommandBuffer combuff, Uint32 bufframe) {
+void draw_all_ents(Uint32 bufframe, VkCommandBuffer combuff) {
 	int i;
 	for (i = 0; i < entity_manager.maxEntities; i++) {
-		gf3d_model_draw(gf3d_model_load(&entity_manager.entityList[i].modelname), bufframe, combuff);
+		draw_entity(&entity_manager.entityList[i], bufframe, combuff);
 	}
 }

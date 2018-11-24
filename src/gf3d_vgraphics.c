@@ -736,8 +736,8 @@ void gf3d_vgraphics_update_uniform_buffer(uint32_t currentImage)
 void gf3d_vgraphics_rotate_camera_Z(float degrees)
 {
     gf3d_matrix_rotate(
-        gf3d_vgraphics.ubo.model,
-        gf3d_vgraphics.ubo.model,
+        gf3d_vgraphics.ubo.view,
+        gf3d_vgraphics.ubo.view,
         degrees,
         vector3d(0,0,1));
 
@@ -746,8 +746,8 @@ void gf3d_vgraphics_rotate_camera_Z(float degrees)
 void gf3d_vgraphics_rotate_camera_Y(float degrees)
 {
 	gf3d_matrix_rotate(
-		gf3d_vgraphics.ubo.model,
-		gf3d_vgraphics.ubo.model,
+		gf3d_vgraphics.ubo.view,
+		gf3d_vgraphics.ubo.view,
 		degrees,
 		vector3d(0, 1, 0));
 
@@ -756,12 +756,21 @@ void gf3d_vgraphics_rotate_camera_Y(float degrees)
 void gf3d_vgraphics_rotate_camera_X(float degrees)
 {
 	gf3d_matrix_rotate(
-		gf3d_vgraphics.ubo.model,
-		gf3d_vgraphics.ubo.model,
+		gf3d_vgraphics.ubo.view,
+		gf3d_vgraphics.ubo.view,
 		degrees,
 		vector3d(1, 0, 0));
 }
 
+void gf3d_vgraphics_rotate_model(float degrees) {
+	{
+		gf3d_matrix_rotate(
+			gf3d_vgraphics.ubo.model,
+			gf3d_vgraphics.ubo.model,
+			degrees,
+			vector3d(1, 0, 0));
+	}
+}
 
 void gf3d_vgraphics_zoom(float increment)
 {
