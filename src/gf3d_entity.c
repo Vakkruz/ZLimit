@@ -91,13 +91,16 @@ void free_entity(Entity *self)
 
 void draw_entity(Entity *self, Uint32 bufframe, VkCommandBuffer combuff) {
 
-	gf3d_model_draw(gf3d_model_load(self->modelname),bufframe,combuff);
+	Model *model;
+	model = gf3d_model_load(self->modelname);
+
+	gf3d_model_draw(model,bufframe,combuff);
 
 }
 
 void draw_all_ents(Uint32 bufframe, VkCommandBuffer combuff) {
 	int i;
 	for (i = 0; i < entity_manager.maxEntities; i++) {
-		draw_entity(&entity_manager.entityList[i], bufframe, combuff);
+		draw_entity(entity_manager.entityList[i], bufframe, combuff);
 	}
 }

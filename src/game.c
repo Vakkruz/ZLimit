@@ -50,12 +50,16 @@ int main(int argc,char *argv[])
 
     while(!done)
     {
+		gf3d_vgraphics_rotate_camera_Y(0.02);
+		gf3d_vgraphics_rotate_camera_X(0.001);
+		gf3d_vgraphics_rotate_camera_Z(0.001);
+
+
         SDL_PumpEvents();   // update SDL's internal event structures
         keys = SDL_GetKeyboardState(NULL); // get the keyboard state for this frame
 		
 
         //update game things here
-        
         
         // configure render command for graphics command pool
         // for each mesh, get a command and configure it from the pool
@@ -68,8 +72,6 @@ int main(int argc,char *argv[])
 			   		             
         gf3d_command_rendering_end(commandBuffer);
         gf3d_vgraphics_render_end(bufferFrame);
-		
-		gf3d_vgraphics_rotate_camera_Y(0.02);
 
 		//controls for camera
 		//if (keys[SDL_SCANCODE_Q])gf3d_vgraphics_rotate_camera_X(0.02);
