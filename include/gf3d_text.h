@@ -57,4 +57,12 @@ typedef char TextBlock[512];
 #define gf3d_block_cpy(dst,src) (strncpy(dst,src,GF3DTEXTLEN))
 #define gf3d_block_clear(a)  (memset(a,0,sizeof(char)*GF3DTEXTLEN))
 
+
+void text_sys_start();
+void text_sys_end();
+
+void set_font(char filename);
+
+void text_display();
+
 #endif
