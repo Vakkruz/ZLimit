@@ -3,6 +3,7 @@
 #include "simple_logger.h"
 
 SDL_GameController *Xbonks = NULL;
+const int DEAD_ZONE = 8000;
 
 
 void gamepad_start() {
@@ -36,5 +37,28 @@ void gamepad_checker(SDL_Event eventer) {
 			slog("Back in the game again!");
 			
 		}
+	}
+}
+
+void gamepad_controls(SDL_Event eventer) {
+	if (SDL_PollEvent(&eventer) != 0) {
+		
+		if (eventer.type == SDL_CONTROLLERAXISMOTION) {
+			if (eventer.jaxis.which == 0) {
+				if (eventer.caxis.axis == 0) {
+					//Left of dead zone
+					if (eventer.jaxis.value < -DEAD_ZONE)
+					{
+						slog("Moving left");
+					}
+					//Right of dead zone
+					else if (eventer.jaxis.value > DEAD_ZONE)
+					{
+						slog("Moving right");
+					}
+				}
+			}
+		}
+
 	}
 }

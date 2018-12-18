@@ -41,7 +41,7 @@ int main(int argc,char *argv[])
         0,                      //fullscreen
         1                       //validation
     );
-	//gamepad_start();
+	gamepad_start();
     
     // main game loop
     slog("gf3d main loop begin");
@@ -76,6 +76,7 @@ int main(int argc,char *argv[])
 
 
 		gamepad_checker(e);
+		gamepad_controls(e);
 
 		//controls for camera
 		//if (keys[SDL_SCANCODE_Q])gf3d_vgraphics_rotate_camera_X(0.02);
