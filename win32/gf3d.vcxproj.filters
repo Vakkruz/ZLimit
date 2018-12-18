@@ -72,6 +72,9 @@
     <ClCompile Include="..\src\gf3d_entity.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\gf3d_gamepad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\gf3d_camera.h">
@@ -131,6 +134,8 @@
     <ClInclude Include="..\include\gf3d_entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-
+    <ClInclude Include="..\include\gf3d_gamepad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

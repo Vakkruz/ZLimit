@@ -246,8 +246,7 @@ void gf3d_vgraphics_setup(
     gf3d_vgraphics.vk_instance_info.pApplicationInfo = &gf3d_vgraphics.vk_app_info;
 
 	enableValidation = false;
-    
-	enableValidation = false;
+
 
     if (enableValidation)
     {

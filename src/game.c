@@ -10,6 +10,7 @@
 #include "gf3d_vector.h"
 #include "gf3d_texture.h"
 #include "gf3d_entity.h"
+#include "gf3d_gamepad.h"
 
 int main(int argc,char *argv[])
 {
@@ -22,9 +23,13 @@ int main(int argc,char *argv[])
 	Entity *bot;
 	Entity *player;
 
+	SDL_Event *e;
+
 	Model *model;
 	Model *model2;
 	Model *model3;
+
+	const int JOYSTICK_DEAD_ZONE = 8000;
     
     init_logger("gf3d.log");    
     slog("gf3d begin");
@@ -36,6 +41,7 @@ int main(int argc,char *argv[])
         0,                      //fullscreen
         1                       //validation
     );
+	//gamepad_start();
     
     // main game loop
     slog("gf3d main loop begin");
@@ -44,16 +50,11 @@ int main(int argc,char *argv[])
     model3 = gf3d_model_load("EGX");
 	//gf3d_vgraphics_rotate_camera_X(0);
 
-	entity_sys_start(40);
-	//bot = new_entity("bot");
-	player = new_entity("player");
+	
 
     while(!done)
     {
-		gf3d_vgraphics_rotate_camera_Y(0.02);
-		gf3d_vgraphics_rotate_camera_X(0.001);
-		gf3d_vgraphics_rotate_camera_Z(0.001);
-
+		SDL_PollEvent(&e);
 
         SDL_PumpEvents();   // update SDL's internal event structures
         keys = SDL_GetKeyboardState(NULL); // get the keyboard state for this frame
@@ -68,10 +69,13 @@ int main(int argc,char *argv[])
 
 		//gf3d_model_draw(model3,bufferFrame,commandBuffer);
 		//gf3d_model_draw(model2,bufferFrame,commandBuffer);
-		draw_all_ents(bufferFrame, commandBuffer);
+		//draw_all_ents(bufferFrame, commandBuffer);
 			   		             
         gf3d_command_rendering_end(commandBuffer);
         gf3d_vgraphics_render_end(bufferFrame);
+
+
+		gamepad_checker(e);
 
 		//controls for camera
 		//if (keys[SDL_SCANCODE_Q])gf3d_vgraphics_rotate_camera_X(0.02);
@@ -83,8 +87,8 @@ int main(int argc,char *argv[])
 		//if (keys[SDL_SCANCODE_D])gf3d_vgraphics_rotate_camera_Z(0.02);
 		//if (keys[SDL_SCANCODE_A])gf3d_vgraphics_rotate_camera_Z(-1 * 0.02);
 
-		if (keys[SDL_SCANCODE_Z])gf3d_vgraphics_rotate_model(0.02);
-		if (keys[SDL_SCANCODE_C])gf3d_vgraphics_rotate_model(-1 * 0.02);
+		//if (keys[SDL_SCANCODE_Z])gf3d_vgraphics_rotate_model(0.02);
+		//if (keys[SDL_SCANCODE_C])gf3d_vgraphics_rotate_model(-1 * 0.02);
 
 		
 		if (keys[SDL_SCANCODE_LCTRL] && (camera_bound > -15.0)) {

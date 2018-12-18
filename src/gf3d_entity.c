@@ -101,6 +101,6 @@ void draw_entity(Entity *self, Uint32 bufframe, VkCommandBuffer combuff) {
 void draw_all_ents(Uint32 bufframe, VkCommandBuffer combuff) {
 	int i;
 	for (i = 0; i < entity_manager.maxEntities; i++) {
-		draw_entity(entity_manager.entityList[i], bufframe, combuff);
+		draw_entity(&entity_manager.entityList[i], bufframe, combuff);
 	}
 }

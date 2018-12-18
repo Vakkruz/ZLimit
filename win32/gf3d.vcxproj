@@ -90,6 +90,7 @@
     <ClCompile Include="..\src\gf3d_commands.c" />
     <ClCompile Include="..\src\gf3d_entity.c" />
     <ClCompile Include="..\src\gf3d_extensions.c" />
+    <ClCompile Include="..\src\gf3d_gamepad.c" />
     <ClCompile Include="..\src\gf3d_matrix.c" />
     <ClCompile Include="..\src\gf3d_mesh.c" />
     <ClCompile Include="..\src\gf3d_model.c" />
@@ -110,6 +111,7 @@
     <ClInclude Include="..\include\gf3d_commands.h" />
     <ClInclude Include="..\include\gf3d_entity.h" />
     <ClInclude Include="..\include\gf3d_extensions.h" />
+    <ClInclude Include="..\include\gf3d_gamepad.h" />
     <ClInclude Include="..\include\gf3d_matrix.h" />
     <ClInclude Include="..\include\gf3d_mesh.h" />
     <ClInclude Include="..\include\gf3d_model.h" />
