@@ -45,7 +45,7 @@ void gamepad_controls(SDL_Event eventer) {
 		
 		if (eventer.type == SDL_CONTROLLERAXISMOTION) {
 			if (eventer.caxis.which == 0) {
-				//Left and right axies
+				//X axies
 				if (eventer.caxis.axis == 0) {
 					//Left of dead zone
 					if (eventer.caxis.value < -DEAD_ZONE)
@@ -74,7 +74,7 @@ void gamepad_controls(SDL_Event eventer) {
 		}
 
 		
-		if (eventer.cbutton.state == SDL_PRESSED) {	
+		else if (eventer.cbutton.state == SDL_PRESSED) {	
 			switch (eventer.cbutton.button) {
 
 				case SDL_CONTROLLER_BUTTON_A:
@@ -93,27 +93,8 @@ void gamepad_controls(SDL_Event eventer) {
 					slog("Button pressed");
 					break;
 			}
-		}else if (eventer.cbutton.state == SDL_RELEASED) {
-			switch (eventer.cbutton.button) {
-
-				case SDL_CONTROLLER_BUTTON_A:
-					slog("A button released");
-					break;
-				case SDL_CONTROLLER_BUTTON_B:
-					slog("B button released");
-					break;
-				case SDL_CONTROLLER_BUTTON_X:
-					slog("X button released");
-					break;
-				case SDL_CONTROLLER_BUTTON_Y:
-					slog("Y button released");
-					break;
-				default:
-					slog("Button released");
-					break;
-
-			}
 		}
+		
 
 
 	}
