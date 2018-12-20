@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 		0,                      //fullscreen
 		1                       //validation
 	);
-	gamepad_start();
+	//gamepad_start();
 
 	// main game loop
 	slog("gf3d main loop begin");
@@ -58,8 +58,9 @@ int main(int argc, char *argv[])
 
 		while (SDL_PollEvent(&e)) {
 			gamepad_controls(&e);
+			
 		}
-		gamepad_checker(e);
+
 
 		SDL_PumpEvents();   // update SDL's internal event structures
 		keys = SDL_GetKeyboardState(NULL); // get the keyboard state for this frame
@@ -72,7 +73,7 @@ int main(int argc, char *argv[])
 		bufferFrame = gf3d_vgraphics_render_begin();
 		commandBuffer = gf3d_command_rendering_begin(bufferFrame);
 
-		//gf3d_model_draw(model3,bufferFrame,commandBuffer);
+		gf3d_model_draw(model3,bufferFrame,commandBuffer);
 		//gf3d_model_draw(model2,bufferFrame,commandBuffer);
 		//draw_all_ents(bufferFrame, commandBuffer);
 
